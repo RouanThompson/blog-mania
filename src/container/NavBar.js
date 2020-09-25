@@ -10,8 +10,7 @@ const link = {
     color: 'white'
 }
 
-class NavBar extends React.Component{
-    render(){
+const NavBar = () => {
         return(
             <div>
                 <NavLink
@@ -27,6 +26,12 @@ class NavBar extends React.Component{
                     activeStyle={{background: 'pink'}}
                 >My Profile</NavLink>
                 <NavLink
+                    to="/makeblog"
+                    exact
+                    style={link}
+                    activeStyle={{background: 'pink'}}
+                >Make a Blog</NavLink>
+                <NavLink
                     to="/login"
                     exact
                     style={link}
@@ -40,7 +45,6 @@ class NavBar extends React.Component{
                 >About</NavLink>
             </div>
         )
-    }
 }
 
 export default NavBar
