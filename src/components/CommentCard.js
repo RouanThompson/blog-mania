@@ -8,7 +8,7 @@ class CommentCard extends React.Component{
         return(
             <div>
                 {comment.name}:<br/>
-                {comment.statement}
+                {comment.statement}<br/>
             </div>
         )
     }

@@ -12,12 +12,13 @@ import { Container } from 'semantic-ui-react'
 // const App = () => {
 class App extends React.Component {
 
-  //initial state of blogs and the current user logged in
+  // initial state of blogs and the current user logged in
+  // blogs is will be use to hold the initial GET fetch and passed to Home > BlogCard to be rendered
   state = {
     blogs: [],
     // comments: [],
     currentUser: {
-      user_id: 1,
+      userId: 1,
       name: "Ron",
     }
   }
@@ -68,6 +69,12 @@ class App extends React.Component {
     })
   }
 
+  newCommentState = (arrayOfBlogs) => {
+    this.setState({
+      blogs: arrayOfBlogs
+    })
+  }
+
   render(){
     
     // console.log("In App", this.state.blogs)
@@ -79,11 +86,12 @@ class App extends React.Component {
           <br/>
           <br/>
           <br/>
-          <Route exact path="/" render={() => ( <Home blogs={this.state.blogs} />)}/>
+          <Route exact path="/" render={() => ( <Home blogs={this.state.blogs} currentUser={this.state.currentUser} newCommentState={this.newCommentState} />)}/>
           <Route exact path="/myprofile" component={MyProfile} />
           <Route exact path="/makeblog" render={() => <MakeBlog newBlogState={this.newBlogState} />}/>
           <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={About} />
+          {/* alienware recording for detail show, and dynamic router */}
         </Container>
       </Router>
     )

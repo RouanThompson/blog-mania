@@ -1,17 +1,18 @@
 import React from 'react'
 import { Modal } from 'semantic-ui-react'
 import CommentCard from './CommentCard'
+import MakeComment from './MakeComment'
 
 class BlogCard extends React.Component {
     //class
 
     renderComments = () => {
         console.log(this.props.blog.comments)
-        return this.props.blog.comments.map(comment => <CommentCard key={comment.id} comment={comment} />)
+        return this.props.blog.comments.map(comment => <CommentCard key={comment.id} comment={comment}/>)
     }
 
     render(){
-        console.log("In Blog Card", this.props)
+        console.log("In Blog Card", this.props.currentUser.userId)
         let {blog} = this.props
         return(
             <div>
@@ -24,17 +25,9 @@ class BlogCard extends React.Component {
                 <div>
                     <h4>Comments</h4>
                     <div>
-                        <form>
-                            <div>
-                                <input type="text" name="comment" placeholder="Add a comment"></input>
-                            </div>
-                            <div>
-                                <button>Submit</button>
-                            </div>
-                        </form>
+                        <MakeComment blogId={blog.id} currentUser={this.props.currentUser} newCommentState={this.props.newCommentState}/>
                     </div>
                     <div>
-                        {/* {blog.comments[0].statement} */}
                         {this.renderComments()}
                     </div>
                 </div>

@@ -2,6 +2,7 @@ import React from 'react'
 
 class MakeBlog extends React.Component {
 
+    //state for the form
     state = {
         cover_image: "",
         title: "",
@@ -11,6 +12,7 @@ class MakeBlog extends React.Component {
         user_id: 1
     }
 
+    //changes the state with the valkues from the form
     formHandleChange = (event) => {
     
         let name = event.target.name
@@ -46,7 +48,7 @@ class MakeBlog extends React.Component {
             title: this.state.title,
             story: this.state.story,
             likes: 0,
-            user_id: 1
+            user_id: this.state.user_id
         }
 
         //2nd
@@ -79,8 +81,7 @@ class MakeBlog extends React.Component {
                     <div>
                         <div>
                             <label>Title: </label>
-                            <input type="text"  name="title" value={this.state.title} onChange={this.formHandleChange}>
-                            </input>
+                            <input type="text"  name="title" value={this.state.title} onChange={this.formHandleChange}></input>
                         </div>
                         <div>
                             <label>story</label>

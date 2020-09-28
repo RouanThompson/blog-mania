@@ -4,10 +4,10 @@ import React from 'react'
 import BlogCard from '../components/BlogCard'
 
 class Home extends React.Component{
-    // render card home will have a render function that maps each blog and pass to render <BlogCard />
+    // render card home will have a function that maps each blog and pass to render <BlogCard />
     
     renderBlogs = () => {
-        return this.props.blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)
+        return this.props.blogs.map(blog => <BlogCard key={blog.id} blog={blog} currentUser={this.props.currentUser} newCommentState={this.props.newCommentState}/>)
     }
     
     render(){
