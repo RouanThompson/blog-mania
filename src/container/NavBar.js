@@ -20,17 +20,17 @@ const NavBar = () => {
                     activeStyle={{background: 'pink'}}
                 >Home</NavLink>
                 <NavLink
-                    to="/myprofile"
-                    exact
-                    style={link}
-                    activeStyle={{background: 'pink'}}
-                >My Profile</NavLink>
-                <NavLink
                     to="/makeblog"
                     exact
                     style={link}
                     activeStyle={{background: 'pink'}}
                 >Make a Blog</NavLink>
+                <NavLink
+                    to="/myprofile"
+                    exact
+                    style={link}
+                    activeStyle={{background: 'pink'}}
+                >My Profile</NavLink>
                 {/* <NavLink
                     to="/login"
                     exact

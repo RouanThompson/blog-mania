@@ -11,10 +11,9 @@ class BlogPage extends React.Component {
         // console.log("in render comments", this.props)
         let { comments } = this.props.blog
         comments.reverse()
-        return comments.map(comment => <CommentCard key={comment.id} comment={comment} commentId={comment.id} blogId={this.props.blog.id} currentUser={this.props.currentUser} deleteCommentState={this.props.deleteCommentState}/>)
+        return comments.map(comment => <CommentCard key={comment.id} comment={comment} commentId={comment.id} blogId={this.props.blog.id} currentUser={this.props.currentUser} deleteCommentState={this.props.deleteCommentState} updateCommentState={this.props.updateCommentState}/>)
     }
 
-    //how to render a blogcard on click? call BlogCard again?
     // use link component from react router
     render(){
         // console.log("In Blog Card", this.props.currentUser.userId)

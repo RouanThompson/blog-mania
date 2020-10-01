@@ -84,7 +84,35 @@ class App extends React.Component {
       blogs: copyOfBlogs
     })
 
-    return console.log("after assign", copyOfBlogs)
+    // return console.log("after assign", copyOfBlogs)
+  }
+
+  updateCommentState = (newBlogs) => {
+    //need a better solution
+    this.setState({
+      blogs: newBlogs
+    })
+    // console.log("comment to be found ", ids.commentId)
+    // let copyOfBlogs = this.state.blogs
+    // let foundBlog = copyOfBlogs.find(blog => blog.id === ids.blogId)
+    // let filteredBlogComments = foundBlog.comments.filter(comment => {
+    //   console.log(comment.id)
+    //   return comment.id !== ids.commentId
+    // })
+    // // console.log("after clear", foundBlog.comments)
+    // foundBlog.comments.length = 0
+
+    // foundBlog.comments = filteredBlogComments.reverse()
+
+    // copyOfBlogs.find(blog => {
+    //   if (blog.id === ids.blogId)
+    //     blog = foundBlog
+    // })
+    // this.setState({
+    //   blogs: copyOfBlogs
+    // })
+
+    // return console.log("after assign", copyOfBlogs)
   }
 
   blogToRender = (routerProps) => {
@@ -96,7 +124,7 @@ class App extends React.Component {
 
     //if the foundBlog exits render the BlogCard else render NotFound
     return (
-      foundBlog ? <BlogPage key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState} editCommentState={this.editCommentState} deleteCommentState={this.deleteCommentState}/> : <NotFound />
+      foundBlog ? <BlogPage key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState} editCommentState={this.editCommentState} deleteCommentState={this.deleteCommentState} updateCommentState={this.updateCommentState}/> : <NotFound />
     )
   }
 
@@ -108,7 +136,7 @@ class App extends React.Component {
       <main>
           <Container>
             <NavBar />
-            <br/>
+            <h1>Welcome Back {this.state.currentUser.name}</h1>
             <br/>
             <br/>
             <br/>
