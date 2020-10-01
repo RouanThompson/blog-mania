@@ -7,7 +7,7 @@ import MakeBlog from './MakeBlog'
 import NavBar from './NavBar'
 import MyProfile from '../components/MyProfile'
 import NotFound from '../components/NotFound'
-import BlogCard from '../components/BlogCard'
+import BlogPage from '../components/BlogPage'
 import { Container } from 'semantic-ui-react'
 
 
@@ -96,7 +96,7 @@ class App extends React.Component {
 
     //if the foundBlog exits render the BlogCard else render NotFound
     return (
-      foundBlog ? <BlogCard key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState} editCommentState={this.editCommentState} deleteCommentState={this.deleteCommentState}/> : <NotFound />
+      foundBlog ? <BlogPage key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState} editCommentState={this.editCommentState} deleteCommentState={this.deleteCommentState}/> : <NotFound />
     )
   }
 
@@ -114,10 +114,10 @@ class App extends React.Component {
             <br/>
             <Route path="/blogs/:id" render={routerProps => this.blogToRender(routerProps)} />
 
-            <Route exact path="/" render={() => ( <Home blogs={this.state.blogs} currentUser={this.state.currentUser} newCommentState={this.newCommentState} deleteCommentState={this.deleteCommentState}/>)}/>
-            <Route exact path="/myprofile" component={MyProfile} />
+            <Route exact path="/" render={() => ( <Home blogs={this.state.blogs} currentUser={this.state.currentUser} />)}/>
+            <Route exact path="/myprofile" render={() => <MyProfile blogs={this.state.blogs} currentUser={this.state.currentUser}/>} />
             <Route exact path="/makeblog" render={() => <MakeBlog newBlogState={this.newBlogState} />}/>
-            <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/login" component={Login} /> */}
             <Route exact path="/about" component={About} />
           </Container>
       </main>

@@ -31,12 +31,12 @@ const NavBar = () => {
                     style={link}
                     activeStyle={{background: 'pink'}}
                 >Make a Blog</NavLink>
-                <NavLink
+                {/* <NavLink
                     to="/login"
                     exact
                     style={link}
                     activeStyle={{background: 'pink'}}
-                >Login</NavLink>
+                >Login</NavLink> */}
                 <NavLink
                     to="/about"
                     exact

@@ -31,8 +31,9 @@ class CommentCard extends React.Component{
         let comment = this.props.comment
         return(
             <div>
-                {comment.name}:<br/>
-                {comment.statement}<br/>
+                <div>
+                    {comment.name}: {comment.statement}
+                </div>
                 {comment.user_id === this.props.currentUser.userId
                     ? <button onClick={this.handleEdit}>Edit</button>
                     : null
