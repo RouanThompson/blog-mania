@@ -40,14 +40,14 @@ class MakeComment extends React.Component{
             body: JSON.stringify(commentObj)
         })
             .then(r => r.json())
-            .then(newComment => {
-                this.props.newCommentState(newComment)
+            .then(blogs => {
+                this.props.newCommentState(blogs)
             })
     }
 
 
     render(){
-        console.log("in Make comments", this.props.currentUser.name)
+        // console.log("in Make comments", this.props)
         return(
             <div>                
                 <form onSubmit={this.formHandleSubmit}>

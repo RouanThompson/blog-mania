@@ -7,19 +7,23 @@ class BlogCard extends React.Component {
     //class
 
     renderComments = () => {
-        console.log(this.props.blog.comments)
-        return this.props.blog.comments.map(comment => <CommentCard key={comment.id} comment={comment}/>)
+        // console.log("in render comments", this.props)
+        let { comments } = this.props.blog
+        comments.reverse()
+        return comments.map(comment => <CommentCard key={comment.id} comment={comment} commentId={comment.id} blogId={this.props.blog.id} deleteCommentState={this.props.deleteCommentState}/>)
     }
 
+    //how to render a blogcard on click? call BlogCard again?
+    // use link component from react router
     render(){
-        console.log("In Blog Card", this.props.currentUser.userId)
+        // console.log("In Blog Card", this.props.currentUser.userId)
         let {blog} = this.props
         return(
             <div>
                 <h3>{blog.title}</h3>
                 <h4>{blog.cover_image}</h4>
                 <h4>by {blog.user.name}</h4>
-                <h3>change story to description here and have story show on click {blog.story}</h3>
+                <h3>change story to description here and have blog show on click {blog.story}</h3>
                 <h5>likes {blog.likes}</h5>
                 <br/>
                 <div>
