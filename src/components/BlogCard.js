@@ -10,7 +10,7 @@ class BlogCard extends React.Component {
         // console.log("in render comments", this.props)
         let { comments } = this.props.blog
         comments.reverse()
-        return comments.map(comment => <CommentCard key={comment.id} comment={comment} commentId={comment.id} blogId={this.props.blog.id} deleteCommentState={this.props.deleteCommentState}/>)
+        return comments.map(comment => <CommentCard key={comment.id} comment={comment} commentId={comment.id} blogId={this.props.blog.id} currentUser={this.props.currentUser} deleteCommentState={this.props.deleteCommentState}/>)
     }
 
     //how to render a blogcard on click? call BlogCard again?

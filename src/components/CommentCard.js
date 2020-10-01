@@ -9,7 +9,7 @@ class CommentCard extends React.Component{
     }
 
     handleDelete = (event) => {
-        // event.preventDefault()
+        event.preventDefault()
 
         let ids = {
             commentId: this.props.commentId,
@@ -17,16 +17,11 @@ class CommentCard extends React.Component{
         }
 
         console.log("Delete button Clicked")
-        // console.log(this.props.deleteCommentState)
 
         // console.log("Delete button clicked", this.props.comment.id)
         fetch(`http://localhost:4000/comments/${this.props.comment.id}`, {
             method: "DELETE"
         })
-            // .then(r => r.json())
-            // .then(deletedComment => {
-            //     console.log(deletedComment)
-            // })
         this.props.deleteCommentState(ids)
     }
 
@@ -38,8 +33,14 @@ class CommentCard extends React.Component{
             <div>
                 {comment.name}:<br/>
                 {comment.statement}<br/>
-                <button onClick={this.handleEdit}>Edit</button>
-                <button onClick={this.handleDelete}>Delete</button>
+                {comment.user_id === this.props.currentUser.userId
+                    ? <button onClick={this.handleEdit}>Edit</button>
+                    : null
+                }
+                {comment.user_id === this.props.currentUser.userId
+                    ? <button onClick={this.handleDelete}>Delete</button>
+                    : null
+                }
             </div>
         )
     }
