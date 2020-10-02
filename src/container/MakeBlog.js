@@ -71,24 +71,25 @@ class MakeBlog extends React.Component {
     
     render(){
 
-       console.log(this.state.title)
-       console.log(this.state.story)
-
+    //    console.log(this.state.title)
+    //    console.log(this.state.story)
+        let banner = "./think-2.png"
         return(
             <div>
-                <h1>Make A Blog</h1>
+                <img src={banner} className="banner2" alt=""></img><br/>
                 <form onSubmit={this.formHandleSubmit}>
                     <div>
                         <div>
-                            <label>Title: </label>
-                            <input type="text"  name="title" value={this.state.title} onChange={this.formHandleChange}></input>
+                            {/* <label>Title </label> */}
+                            <input className="formTitle" type="text"  name="title" placeholder="Title" value={this.state.title} onChange={this.formHandleChange}></input>
+                        </div>
+                        {/* <input className="formTitle" type="file"></input> */}
+                        <div>
+                            {/* <label>Story</label> */}
+                            <textarea className="formTextarea" name="story" placeholder="Write away" value={this.state.value} onChange={this.formHandleChange}></textarea>
                         </div>
                         <div>
-                            <label>story</label>
-                            <textarea name="story" value={this.state.value} onChange={this.formHandleChange}></textarea>
-                        </div>
-                        <div>
-                            <button>Submit</button>
+                            <button className="submit">Publish</button>
                         </div>
                     </div>
                 </form>

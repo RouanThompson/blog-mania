@@ -2,12 +2,21 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const link = {
-    width: '100px',
-    padding: '12px',
-    margin: '0 6px 6px',
-    background: 'gray',
+    padding: '10px',
+    background: '#faf0af',
     textDecoration: 'none',
-    color: 'white'
+    color: 'black',
+    borderRadius: '25px',
+    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
+    margin: '0 5px',
+    // border: '1px solid #000000'
+
+}
+
+const active = {
+    background: '#8bcdcd',
+    boxShadow: '0 15px 8px 0 rgba(0, 0, 0, 0.2)',
+
 }
 
 const NavBar = () => {
@@ -17,31 +26,31 @@ const NavBar = () => {
                     to="/"
                     exact
                     style={link}
-                    activeStyle={{background: 'pink'}}
+                    activeStyle={active}
                 >Home</NavLink>
                 <NavLink
                     to="/makeblog"
                     exact
                     style={link}
-                    activeStyle={{background: 'pink'}}
+                    activeStyle={active}
                 >Make a Blog</NavLink>
                 <NavLink
                     to="/myprofile"
                     exact
                     style={link}
-                    activeStyle={{background: 'pink'}}
+                    activeStyle={active}
                 >My Profile</NavLink>
                 {/* <NavLink
                     to="/login"
                     exact
                     style={link}
-                    activeStyle={{background: 'pink'}}
+                    activeStyle={active}
                 >Login</NavLink> */}
                 <NavLink
                     to="/about"
                     exact
                     style={link}
-                    activeStyle={{background: 'pink'}}
+                    activeStyle={active}
                 >About</NavLink>
             </div>
         )

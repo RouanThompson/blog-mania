@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from './Home'
 import About from '../components/About'
-import Login from '../components/Login'
+// import Login from '../components/Login'
 import MakeBlog from './MakeBlog'
 import NavBar from './NavBar'
 import MyProfile from '../components/MyProfile'
@@ -90,7 +90,7 @@ class App extends React.Component {
   updateCommentState = (newBlogs) => {
     //need a better solution
     this.setState({
-      blogs: newBlogs
+      blogs: newBlogs.reverse()
     })
     // console.log("comment to be found ", ids.commentId)
     // let copyOfBlogs = this.state.blogs
@@ -135,9 +135,13 @@ class App extends React.Component {
     return (
       <main>
           <Container>
-            <NavBar />
-            <h1>Welcome Back {this.state.currentUser.name}</h1>
+            <div>
+              <NavBar />
+            </div>
             <br/>
+            <br/>
+            <br/>
+            {/* <div className="title"><h1>Welcome back To Blog-Mania,  {this.state.currentUser.name}</h1></div> */}
             <br/>
             <br/>
             <Route path="/blogs/:id" render={routerProps => this.blogToRender(routerProps)} />

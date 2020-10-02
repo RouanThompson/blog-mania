@@ -12,10 +12,18 @@ class Home extends React.Component{
     
     render(){
         // console.log("In Home", this.props)
+        let banner = "./Blog-Mania.png"
         return(
             <div>
-                <h1>Blogs</h1>
-                {this.renderBlogs()}
+                <img src={banner} className="banner" alt=""></img>
+                {/* <div className="subTitle">
+                    <h1>Blogs</h1>
+                </div> */}
+                <div className="wrapper">
+                    <div className="grid">
+                        {this.renderBlogs()}
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import CommentCard from './CommentCard'
 import MakeComment from './MakeComment'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 
 class BlogPage extends React.Component {
@@ -19,14 +19,12 @@ class BlogPage extends React.Component {
         // console.log("In Blog Card", this.props.currentUser.userId)
         let {blog} = this.props
         return(
-            <div>
-                <Link to={`/blogs/${blog.id}`}>
+            <div className="blogStory">
                     <h3>{blog.title}</h3>
-                    <h4>{blog.cover_image}</h4>
+                    {/* <h4>{blog.cover_image}</h4> */}
                     <h4>by {blog.user.name}</h4>
-                    <h3>change story to description here and have blog show on click {blog.story}</h3>
-                    <h5>likes {blog.likes}</h5>
-                </Link>
+                    <p className="story">{blog.story}</p>
+                    {/* <h5>likes {blog.likes}</h5> */}
                 <br/>
                 <div>
                     <h4>Comments</h4>
