@@ -12,9 +12,11 @@ class Home extends React.Component{
     
     render(){
         // console.log("In Home", this.props)
+        //imported image
         let banner = "./Blog-Mania.png"
         return(
             <div>
+                {/* imported image  */}
                 <img src={banner} className="banner" alt=""></img>
                 {/* <div className="subTitle">
                     <h1>Blogs</h1>

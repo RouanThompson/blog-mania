@@ -145,7 +145,7 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 25px;
   background-color: #e5edb7;
-  height: 250px;
+  /* height: 250px; */
 }
 
 /* use this for contents of card */
