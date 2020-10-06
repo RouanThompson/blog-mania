@@ -20,6 +20,16 @@ class BlogPage extends React.Component {
         let {blog} = this.props
         return(
             <div className="blogStory">
+                    <div>
+                        {blog.user.id === this.props.currentUser.userId
+                            ? <button onClick={this.toggleEditForm}>Edit</button>
+                            : null
+                        }
+                        {blog.user.id === this.props.currentUser.userId
+                            ? <button onClick={this.handleDelete}>Delete</button>
+                            : null
+                        }
+                    </div>
                     <h3>{blog.title}</h3>
                     {/* <h4>{blog.cover_image}</h4> */}
                     <h4>by {blog.user.name}</h4>

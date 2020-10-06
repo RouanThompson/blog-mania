@@ -98,15 +98,15 @@ class CommentCard extends React.Component{
                 <form>
                     <div>
                         {comment.name}: {comment.statement}
+                        {comment.user_id === this.props.currentUser.userId
+                            ? <button onClick={this.toggleEditForm}>Edit</button>
+                            : null
+                        }
+                        {comment.user_id === this.props.currentUser.userId
+                            ? <button onClick={this.handleDelete}>Delete</button>
+                            : null
+                        }
                     </div>
-                    {comment.user_id === this.props.currentUser.userId
-                        ? <button onClick={this.toggleEditForm}>Edit</button>
-                        : null
-                    }
-                    {comment.user_id === this.props.currentUser.userId
-                        ? <button onClick={this.handleDelete}>Delete</button>
-                        : null
-                    }
                 </form>
                 {this.state.showEditForm ? this.handleEdit() : null}
             </div>

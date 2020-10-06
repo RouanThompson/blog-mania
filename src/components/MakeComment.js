@@ -53,9 +53,9 @@ class MakeComment extends React.Component{
                 <form onSubmit={this.formHandleSubmit}>
                     <div>
                         <input type="text" name="statement" placeholder="Add a comment" value={this.state.statement} onChange={this.formHandleChange}></input>
-                    </div>
                     <div>
                         <button>Submit</button>
+                    </div>
                     </div>
                 </form>
             </div>
