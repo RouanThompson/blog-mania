@@ -14,6 +14,18 @@ class BlogPage extends React.Component {
         return comments.map(comment => <CommentCard key={comment.id} comment={comment} commentId={comment.id} blogId={this.props.blog.id} currentUser={this.props.currentUser} deleteCommentState={this.props.deleteCommentState} updateCommentState={this.props.updateCommentState}/>)
     }
 
+    handleDelete = (event) => {
+        event.preventDefault()
+
+        //make a fetch to delete blog
+        fetch(`http://localhost:4000/blogs/${this.props.blog.id}`, {
+            method: "DELETE"
+        })
+        //uses a callback function that takes the blog id
+        this.props.deleteBlogState(this.props.blog.id)
+    } 
+
+
     // use link component from react router
     render(){
         // console.log("In Blog Card", this.props.currentUser.userId)

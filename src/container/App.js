@@ -58,9 +58,20 @@ class App extends React.Component {
     })
   }
 
-  //find the blog id and then find the comment id and delete it
-  editCommentState = () => {
+  deleteBlogState = (id) => {
+    let copyOfBlogs = this.state.blogs
 
+    // console.log("blog id to be found", id)
+
+    let filteredBlogs = copyOfBlogs.filter(blog => {
+      // console.log(blog.id)
+      return blog.id !== id
+    })
+    // console.log(filteredBlogs)
+
+    this.setState({
+      blogs: filteredBlogs
+    })
   }
 
   deleteCommentState = (ids) => {
@@ -68,7 +79,7 @@ class App extends React.Component {
     let copyOfBlogs = this.state.blogs
     let foundBlog = copyOfBlogs.find(blog => blog.id === ids.blogId)
     let filteredBlogComments = foundBlog.comments.filter(comment => {
-      console.log(comment.id)
+      // console.log(comment.id)
       return comment.id !== ids.commentId
     })
     // console.log("after clear", foundBlog.comments)
@@ -124,7 +135,7 @@ class App extends React.Component {
 
     //if the foundBlog exits render the BlogCard else render NotFound
     return (
-      foundBlog ? <BlogPage key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState} editCommentState={this.editCommentState} deleteCommentState={this.deleteCommentState} updateCommentState={this.updateCommentState}/> : <NotFound />
+      foundBlog ? <BlogPage key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState} editCommentState={this.editCommentState} deleteBlogState={this.deleteBlogState} deleteCommentState={this.deleteCommentState} updateCommentState={this.updateCommentState}/> : <NotFound />
     )
   }
 
