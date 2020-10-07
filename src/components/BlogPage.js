@@ -5,13 +5,97 @@ import MakeComment from './MakeComment'
 
 
 class BlogPage extends React.Component {
-    //class
+    
+    state = {
+        showEditForm: false,
+        id: this.props.blog.id,
+        cover_image: this.props.blog.cover_image,
+        title: this.props.blog.title,
+        story: this.props.blog.story,
+        likes: this.props.blog.likes,
+        comments: this.props.blog.comments
+    }
 
     renderComments = () => {
-        // console.log("in render comments", this.props)
+        console.log("blog ID", this.state.id)
         let { comments } = this.props.blog
         comments.reverse()
         return comments.map(comment => <CommentCard key={comment.id} comment={comment} commentId={comment.id} blogId={this.props.blog.id} currentUser={this.props.currentUser} deleteCommentState={this.props.deleteCommentState} updateCommentState={this.props.updateCommentState}/>)
+    }
+
+    //controlled inputs
+    formHandleChange = (event) => {
+        let name = event.target.name
+        let value = event.target.value
+        this.setState({
+            [name]: value
+        })
+    }
+
+    toggleEditForm = (event) => {
+        console.log("Edit button clicked")
+        //render the edit form with previous values
+
+        //prevents reload on click
+        if (event){
+            event.preventDefault()
+        }
+        this.setState({
+            showEditForm: !this.state.showEditForm
+        })
+    }
+
+    formHandlePatch = (event) => {
+        event.preventDefault()
+
+        let blog = {
+            id: this.state.id,
+            cover_image: this.state.cover_image,
+            title: this.state.title,
+            story: this.state.story,
+            likes: this.state.likes,
+            comments: this.state.comments
+        }
+
+        let id = this.props.blog.id
+        fetch(`http://localhost:4000/blogs/${id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(blog)
+        })
+            .then(r => r.json())
+            .then(blogs => {
+                this.props.updateBlogState(blogs)
+            })
+            this.toggleEditForm()
+    }
+
+    handleEdit = () => {
+
+        // let banner = "./think-2.png"
+        return (
+                // <img src={banner} className="banner2" alt=""></img><br/>
+            <div>
+                <form onSubmit={this.formHandlePatch}>
+                    <div>
+                        <div>
+                            {/* <label>Title </label> */}
+                            <input className="formTitle" type="text"  name="title" placeholder="Title" value={this.state.title} onChange={this.formHandleChange}></input>
+                        </div>
+                        {/* <input className="formTitle" type="file"></input> */}
+                        <div>
+                            {/* <label>Story</label> */}
+                            <textarea className="formTextarea" name="story" placeholder="Write away" value={this.state.story} onChange={this.formHandleChange}></textarea>
+                        </div>
+                        <div>
+                            <button className="submit">Finalize editing</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        )
     }
 
     handleDelete = (event) => {
@@ -47,6 +131,7 @@ class BlogPage extends React.Component {
                     <h4>by {blog.user.name}</h4>
                     <p className="story">{blog.story}</p>
                     {/* <h5>likes {blog.likes}</h5> */}
+                    {this.state.showEditForm ? this.handleEdit() : null}
                 <br/>
                 <div>
                     <h4>Comments</h4>

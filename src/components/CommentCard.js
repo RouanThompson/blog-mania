@@ -58,7 +58,7 @@ class CommentCard extends React.Component{
 
     handleEdit = () => {
         // event.preventDefault()
-        console.log("Edit button clicked")
+        // console.log("Edit button clicked")
         return (
             <form onSubmit={this.handlePatch}>
                 <div>

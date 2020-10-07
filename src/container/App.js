@@ -51,13 +51,7 @@ class App extends React.Component {
       blogs: updatedBlogs
     })
   }
-
-  newCommentState = (arrayOfBlogs) => {
-    this.setState({
-      blogs: arrayOfBlogs.reverse()
-    })
-  }
-
+  
   deleteBlogState = (id) => {
     let copyOfBlogs = this.state.blogs
 
@@ -73,6 +67,19 @@ class App extends React.Component {
       blogs: filteredBlogs
     })
   }
+
+  updateBlogState = (arrayOfBlogs) => {
+    this.setState({
+      blogs: arrayOfBlogs.reverse()
+    })
+  }
+
+  newCommentState = (arrayOfBlogs) => {
+    this.setState({
+      blogs: arrayOfBlogs.reverse()
+    })
+  }
+
 
   deleteCommentState = (ids) => {
     console.log("comment to be found ", ids.commentId)
@@ -135,7 +142,7 @@ class App extends React.Component {
 
     //if the foundBlog exits render the BlogCard else render NotFound
     return (
-      foundBlog ? <BlogPage key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState} editCommentState={this.editCommentState} deleteBlogState={this.deleteBlogState} deleteCommentState={this.deleteCommentState} updateCommentState={this.updateCommentState}/> : <NotFound />
+      foundBlog ? <BlogPage key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState}  deleteBlogState={this.deleteBlogState} updateBlogState={this.updateBlogState} deleteCommentState={this.deleteCommentState} updateCommentState={this.updateCommentState}/> : <NotFound />
     )
   }
 
