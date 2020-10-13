@@ -6,16 +6,6 @@ import MakeComment from './MakeComment'
 
 const BlogPageHook = (props) => {
 
-    // state = {
-    //     showEditForm: false,
-    //     id: props.blog.id,
-    //     cover_image: props.blog.cover_image,
-    //     title: props.blog.title,
-    //     story: props.blog.story,
-    //     likes: props.blog.likes,
-    //     comments: props.blog.comments
-    // }
-
     const [formData, setFormData] = useState({
         showEditForm: false,
         id: props.blog.id,
