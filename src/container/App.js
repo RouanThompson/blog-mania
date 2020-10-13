@@ -7,7 +7,10 @@ import MakeBlog from './MakeBlog'
 import NavBar from './NavBar'
 import MyProfile from '../components/MyProfile'
 import NotFound from '../components/NotFound'
-import BlogPage from '../components/BlogPage'
+// import BlogPage from '../components/BlogPage'
+
+import BlogPageHook from '../components/BlogPageHook'
+
 import { Container } from 'semantic-ui-react'
 
 
@@ -82,7 +85,7 @@ class App extends React.Component {
 
 
   deleteCommentState = (ids) => {
-    console.log("comment to be found ", ids.commentId)
+    // console.log("comment to be found ", ids.commentId)
     let copyOfBlogs = this.state.blogs
     let foundBlog = copyOfBlogs.find(blog => blog.id === ids.blogId)
     let filteredBlogComments = foundBlog.comments.filter(comment => {
@@ -142,7 +145,7 @@ class App extends React.Component {
 
     //if the foundBlog exits render the BlogCard else render NotFound
     return (
-      foundBlog ? <BlogPage key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState}  deleteBlogState={this.deleteBlogState} updateBlogState={this.updateBlogState} deleteCommentState={this.deleteCommentState} updateCommentState={this.updateCommentState}/> : <NotFound />
+      foundBlog ? <BlogPageHook key={foundBlog.id} blog={foundBlog} currentUser={this.state.currentUser} newCommentState={this.newCommentState}  deleteBlogState={this.deleteBlogState} updateBlogState={this.updateBlogState} deleteCommentState={this.deleteCommentState} updateCommentState={this.updateCommentState}/> : <NotFound />
     )
   }
 
