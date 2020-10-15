@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import Home from './Home'
 import About from '../components/About'
-// import Login from '../components/Login'
+import Login from '../components/Login'
+import SignUp from '../components/SignUp'
 import MakeBlog from './MakeBlog'
 import NavBar from './NavBar'
 import MyProfile from '../components/MyProfile'
@@ -23,12 +24,10 @@ const AppHook = () => {
   const [blogsData, setBlogsData] = useState([])
 
   const [currentUser, setCurrentUser] = useState ({
-    userId: 1,
-    name: "Ron"
+    currentUser: null
   })
 
   // Get fetch data from database and saves it to state
-  // do not call a seperate componentDidMount() it will not keep the state of blogs
 
   useEffect(() => {
     fetch("http://localhost:4000/blogs")
@@ -137,7 +136,8 @@ const AppHook = () => {
           <Route exact path="/" render={() => ( <Home blogs={blogsData} currentUser={currentUser} />)}/>
           <Route exact path="/myprofile" render={() => <MyProfile blogs={blogsData} currentUser={currentUser}/>} />
           <Route exact path="/makeblog" render={() => <MakeBlog newBlogState={newBlogState} />}/>
-          {/* <Route exact path="/login" component={Login} /> */}
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
           <Route exact path="/about" component={About} />
         </Container>
     </main>

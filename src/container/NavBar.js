@@ -40,12 +40,18 @@ const NavBar = () => {
                     style={link}
                     activeStyle={active}
                 >My Profile</NavLink>
-                {/* <NavLink
+                <NavLink
                     to="/login"
                     exact
                     style={link}
                     activeStyle={active}
-                >Login</NavLink> */}
+                >Login</NavLink>
+                <NavLink
+                    to="/signup"
+                    exact
+                    style={link}
+                    activeStyle={active}
+                >Sign Up</NavLink>
                 <NavLink
                     to="/about"
                     exact
