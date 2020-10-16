@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Home from './Home'
 import About from '../components/About'
 import Login from '../components/Login'
@@ -23,9 +23,7 @@ const AppHook = () => {
 
   const [blogsData, setBlogsData] = useState([])
 
-  const [currentUser, setCurrentUser] = useState ({
-    currentUser: null
-  })
+  const [currentUser, setCurrentUser] = useState ({})
 
   // Get fetch data from database and saves it to state
 
@@ -115,9 +113,16 @@ const AppHook = () => {
     )
   }
 
+  const handleLogin = (userToLogin) => {
+    console.log("in App: userToLogin Before setState", userToLogin)
+    // asynchronous
+    setCurrentUser(userToLogin)
+  }
+  console.log("in App: currentUser After SetState", currentUser)
+  
   
   if (blogsData.length === 0)
-    return <h1>Loading...</h1>
+  return <h1>Loading...</h1>
   // console.log("in App: ", blogsData)
   return (
     <main>
@@ -137,7 +142,7 @@ const AppHook = () => {
           <Route exact path="/myprofile" render={() => <MyProfile blogs={blogsData} currentUser={currentUser}/>} />
           <Route exact path="/makeblog" render={() => <MakeBlog newBlogState={newBlogState} />}/>
           <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signup" render={() => <SignUp handleLogin={handleLogin}/>} />
           <Route exact path="/about" component={About} />
         </Container>
     </main>

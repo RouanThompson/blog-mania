@@ -41,7 +41,9 @@ const SignUp = (props) => {
             body: JSON.stringify(userObj)
         })
             .then(r => r.json())
-            .then(newUser => console.log(newUser))
+            .then(newUser => {
+                props.handleLogin(newUser)
+            })
     }
     
 
